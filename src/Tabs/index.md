@@ -48,7 +48,16 @@ toc: 'content'
 | swipeRatio | number | 否 | 0.2 | 用户左右滑动手势触发切换的阈值，当滑动距离超过阈值时进行 `swiper-item` 切换 |
 | swipeSpeed | number | 否 | 0.05 | 用户左右滑动手势对应的滑动距离，数值越小则需要用户手势相同位移下 `swiper-item` 位移越小 |
 | swipeable | boolean | 否 | false | 是否支持手势切换 |
-| touchAngle | number | 否 | 45 | 用户左右滑动手势生效的滑动角度。角度根据 touchstart 事件和首次 touchmove 事件的坐标计算得出。数值越小越对用户的滑动方向准确度要求越高 |
+| touchAngle | number | 否 | 45 | 用户左右滑动手势生效的滑动角度。角度根据 touchstart 事件和首次 touchmove 事件的坐标计算得出。数值越小越对用户的滑动方向准确度要求越高 |  
+
+#### TabItem
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+| -----|-----|-----|-----|----- |
+| tab | ITabItem[]| 是 | - | 每一项 tab 内容 |
+| className | string | 否 | - | 类名 |
+
+
+### 类型
 
 ``` typescript
 interface ITabItem {
@@ -59,12 +68,6 @@ interface ITabItem {
   disabled?: boolean;
 }
 ```
-#### TabItem
-| 属性 | 类型 | 必填 | 默认值 | 说明 |
-| -----|-----|-----|-----|----- |
-| tab | ITabItem[]| 是 | - | 每一项 tab 内容 |
-| className | string | 否 | - | 类名 |
-
 ## 事件
 
 #### Tabs
