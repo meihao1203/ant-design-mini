@@ -1,0 +1,71 @@
+<import-sjs name="util" from="./index.sjs"/>
+
+<view class="my-paytm-swipe">
+  <view class="paytm-swipe {{className}}" style="{{{ width: util.getWidth(rightWidth, inertiaWidth) }}}">
+    <movable-area class="paytm-swipe-movable" style="{{{ 'margin-left': util.getMarginLeft(rightWidth, inertiaWidth) }}}">
+      <movable-view
+        class="paytm-swipe-movable-content"
+        style="{{{
+          width: util.getWidth2(rightWidth, inertiaWidth),
+          'margin-left': util.getMarginLeft2(rightWidth, inertiaWidth)}}}"
+        x="{{x}}"
+        data-type="content"
+        animation="{{true}}"
+        direction="horizontal"
+        out-of-bounds="{{ false }}"
+        catchTouchEnd="onTouchEnd"
+        damping="{{damping}}"
+        catchTouchStart="onTouchStart"
+        disabled="{{disabled || disable}}"
+        onTap="onSwipeTap"
+        onChange="onChange"
+        onChangeEnd="onChangeEnd"
+        onTouchCancel="onTouchCancel"
+      >
+        <view
+          class="paytm-swipe-movable-content-view"
+          style="{{{width: util.getWidth3(rightWidth)}}}"
+          catchTap="onClick">
+          <view class="paytm-swipe-movable-content-view-modal" a:if="{{isSwiped}}"></view>
+          <slot />
+        </view>
+      </movable-view>
+      <movable-view
+        class="paytm-swipe-movable-content {{`paytm-swipe-movable-content-${$id}`}}"
+        a:for="{{right}}"
+        a:for-item="item"
+        a:for-index="idx"
+        damping="{{damping}}"
+        a:key="{{idx}}"
+        style="{{{
+          'z-index': tapType === item.type ? 1 : 0,
+          'margin-left': util.getWidth3(rightWidth),
+          width: (rightWidth - 2) + 'rpx',
+          'background-color': tapType ? 'transparent' : item.bgColor }}}"
+        data-type="content"
+        animation="{{false}}"
+        disabled="{{true}}"
+        direction="horizontal"
+        x="{{f_x * ((right.length - idx) / right.length)}}"
+      >
+        <view class="paytm-swipe-movable-content-right" style="{{{width: rightItemWidth + 'rpx'}}}">
+          <view
+            class="paytm-swipe-movable-content-right-text"
+            catchTap="rightItemTap"
+            data-item="{{item, idx}}"
+            style="{{{
+              'background-color': item.bgColor,
+              'font-size': (item.fontSize || 30) + 'rpx',
+              color: item.color,
+              width: tapType && tapType === item.type ? (rightWidth) + 'rpx' : '100%',
+              ...(tapType && tapType === item.type ? myStyle : {})
+              }}}">
+              <text class="right-text {{util.getLeft(tapType, item, idx, right)}}">
+                {{tapType && tapType === item.type ? (item.confirmText || item.text) : item.text}}
+              </text>
+          </view>
+        </view>
+      </movable-view>
+    </movable-area>
+  </view>
+</view>
