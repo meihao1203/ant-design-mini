@@ -1,4 +1,4 @@
-export const SwipeActionToolDefaultProps = {
+export const SwipeToolDefaultProps = {
   key: '', // 唯一标识
   className: '', // 样式
   right: [], // 左滑出的数据

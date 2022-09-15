@@ -69,7 +69,7 @@
     "pages/Grid/index",
     "pages/Footer/index",
     "pages/CascaderPicker/index",
-    "pages/SwipeActionTool/index"
+    "pages/SwipeTool/index"
   ],
   "window": {
     "enableWK": "YES",

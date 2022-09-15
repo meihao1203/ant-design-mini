@@ -10,7 +10,7 @@ interface RightItem {
   eventType?: "auto" | "self"; // 按钮点击类型
 }
 
-export interface ISwipeActionToolProps extends IBaseProps {
+export interface ISwipeToolProps extends IBaseProps {
   key: string, // 唯一标识
   disable?: boolean, // 禁止滑动
   swiped: boolean, // 设置滑动状态
@@ -23,4 +23,4 @@ export interface ISwipeActionToolProps extends IBaseProps {
   onRightItemEvent: (type: string, key: string, callbackData: any) => {}, // 左滑出的元素的点击事件
 }
 
-export declare const SwipeActionToolDefaultProps: Partial<ISwipeActionToolProps>;
+export declare const SwipeToolDefaultProps: Partial<ISwipeToolProps>;

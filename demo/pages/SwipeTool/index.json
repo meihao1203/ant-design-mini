@@ -1,6 +1,6 @@
 {
   "defaultTitle": "Swipe-Action-Tool",
   "usingComponents": {
-    "swipe-action-tool": "../../../src/SwipeActionTool/index"
+    "swipe-tool": "../../../src/SwipeTool/index"
   }
 }

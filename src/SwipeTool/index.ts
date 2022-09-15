@@ -1,4 +1,4 @@
-import { SwipeActionToolDefaultProps } from './props'
+import { SwipeToolDefaultProps } from './props'
 
 const setStyleObj = (rightItemWidth: number) => [
   {
@@ -13,7 +13,7 @@ const setStyleObj = (rightItemWidth: number) => [
 ];
 
 Component({
-  props: SwipeActionToolDefaultProps,
+  props: SwipeToolDefaultProps,
   data: {
     x: 0, // 主体部分左滑的位置
     damping: 40, // 左滑的速度

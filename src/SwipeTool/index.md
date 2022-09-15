@@ -7,7 +7,7 @@ group:
 toc: 'content'
 ---
 
-# SwipeActionTool 滑动操作工具
+# SwipeTool 滑动工具
 列表的功能扩展
 ## 何时使用
 通过滑动操作来展示隐藏的功能菜单
@@ -15,7 +15,7 @@ toc: 'content'
 ## 代码示例
 
 ### 基本使用
-<code src='../../demo/pages/SwipeActionTool'></code>
+<code src='../../demo/pages/SwipeTool'></code>
 
 
 ## 属性

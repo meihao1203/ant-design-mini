@@ -1,6 +1,6 @@
 <view class="t-swipe">
     <view class="t-swipe-item" a:for="{{rightArr}}">
-        <swipe-action-tool
+        <swipe-tool
           swiped="{{item.event.key === swipeStr}}"
           right="{{item.event.right}}"
           key="{{item.event.key}}"
@@ -14,6 +14,6 @@
             <view class="t-swipe-item-con">
                 {{ item.detail }}
             </view>
-        </swipe-action-tool>
+        </swipe-tool>
     </view>
 </view>
