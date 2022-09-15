@@ -21,12 +21,13 @@ toc: 'content'
 ## 属性
 |属性           |类型        |必填  |默认值  |说明   |
 | ------------ |------------|-----|-------|--------------|
-|key           | `string`     | 是  | ''    | 滑动唯一标识    |
-|right         | `RightItem`  | 是  | []    | 左滑滑出的数据  |
-|swiped        | `boolean`    | 是  | false | 滑动状态       |
-|disable       | `boolean`    | 否  | false | 禁止滑动       |
-|rightItemWidth| `number`     | 否  | 150   | 元素宽度       |
-|callbackData  | `any`        | 否  | {}    | 事件回调数据    |
+|className     | `string`   | 否  | ''    | 组件样式       |
+|key           | `string`   | 是  | ''    | 滑动唯一标识    |
+|right         | `RightItem`| 是  | []    | 左滑滑出的数据  |
+|swiped        | `boolean`  | 是  | false | 滑动状态       |
+|disable       | `boolean`  | 否  | false | 禁止滑动       |
+|rightItemWidth| `number`   | 否  | 150   | 元素宽度       |
+|callbackData  | `any`      | 否  | {}    | 事件回调数据    |
 
 ### Interface RightItem
 
