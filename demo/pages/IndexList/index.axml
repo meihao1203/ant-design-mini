@@ -1,0 +1,8 @@
+<view class="index-alphabet">
+  <view class="index-alphabet-i">
+    <alph
+      className=""
+      alphabetList="{{alphabetList}}"
+      onTouch="onTouch"/>
+  </view>
+</view>

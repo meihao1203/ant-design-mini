@@ -1,0 +1,10 @@
+{
+  "defaultTitle": "IndexList",
+  "pullRefresh": "NO",
+  "showProgress": "NO",
+  "allowsBounceVertical": "NO",
+  "usingComponents": {
+    "index-list": "../../../src/IndexList/index"
+  }
+}
+  

@@ -1,0 +1,19 @@
+<view class="i-alphabet {{className}}" disable-scroll="{{true}}" hover-stop-propagation>
+  <view a:if="{{showMask}}" class="i-alphabet-mask"></view>
+  <view class="i-alphabet">
+    <view
+      a:for="{{alphabetList}}"
+      class="i-alphabet-item"
+      catchTouchStart="onTouchStart"
+      catchTouchMove="onTouchMove"
+      catchTouchEnd="onTouchEnd"
+      data-item="{{item, index}}"
+      id="{{'i-alphabet-' + index}}"
+    >
+      {{item}}
+      <view class="i-alphabet-item-tip" a:if="{{item === touchKey}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

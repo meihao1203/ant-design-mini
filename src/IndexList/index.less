@@ -1,0 +1,50 @@
+.i-alphabet {
+  min-height: 48px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10001;
+  &-mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+  }
+  &-item {
+    font-size: 10px;
+    color: #999;
+    height: 14px;
+    width: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &-tip {
+      position: absolute;
+      left: -210rpx;
+      bottom: -36rpx;
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 100rpx;
+      line-height: 100rpx;
+      text-align: center;
+      background: #ccc;
+      color: white;
+      font-size: 56rpx;
+      &::after {
+        content: "";
+        position: absolute;
+        top: -30rpx;
+        right: -60rpx;
+        display: block;
+        margin: 40rpx auto;
+        width: 0;
+        height: 0;
+        border: 40rpx solid transparent;
+        border-left-color: #ccc;
+      }
+    }
+  }
+}
