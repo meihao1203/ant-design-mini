@@ -2,8 +2,8 @@
 nav:
   path: /components
 group:
-  title: 信息展示
-  order: 8
+  title: 实验性质的组件
+  order: 16
 toc: 'content'
 ---
 

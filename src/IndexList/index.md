@@ -2,8 +2,8 @@
 nav:
   path: /components
 group:
-  title: 信息展示
-  order: 8
+  title: 实验性质的组件
+  order: 16
 toc: 'content'
 ---
 
@@ -23,10 +23,10 @@ A-Z索引选择等
 |属性           |类型        |必填  |默认值  |说明   |
 | ------------ |------------|-----|-------|--------------|
 |className     | `string`   | 否  | ''    | 组件样式       |
-|alphabetList  | `any[]`    | 是  | []    | 索引数组       |
+|alphabetList  | `string[]` | 是  | []    | 索引数组       |
 
 ## 事件
 |事件名             | 说明                | 类型                                                      |
 | -----------------|--------------------|-----------------------------------------------------------|
-| onTouch          | 滑动触摸索引的回调    | (key: string) => void                                     |
+| onTouch          | 滑动触摸索引的回调    | (alphabetItem: string) => void                            |
 
