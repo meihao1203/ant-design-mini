@@ -1,13 +1,13 @@
 <import-sjs name="util" from="./index.sjs"/>
 
 <view class="my-paytm-swipe">
-  <view class="paytm-swipe {{className}}" style="{{{ width: util.getWidth(rightWidth, inertiaWidth) }}}">
-    <movable-area class="paytm-swipe-movable" style="{{{ 'margin-left': util.getMarginLeft(rightWidth, inertiaWidth) }}}">
+  <view class="paytm-swipe {{className}}" style="{{{ width: util.getWidth(rightWidth) }}}">
+    <movable-area class="paytm-swipe-movable" style="{{{ 'margin-left': util.getMarginLeft(rightWidth) }}}">
       <movable-view
         class="paytm-swipe-movable-content"
         style="{{{
-          width: util.getWidth2(rightWidth, inertiaWidth),
-          'margin-left': util.getMarginLeft2(rightWidth, inertiaWidth)}}}"
+          width: util.getWidth2(rightWidth),
+          'margin-left': util.getMarginLeft2(rightWidth)}}}"
         x="{{x}}"
         data-type="content"
         animation="{{true}}"

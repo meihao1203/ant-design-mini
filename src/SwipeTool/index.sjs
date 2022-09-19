@@ -1,20 +1,20 @@
-const getWidth = (rightWidth, inertiaWidth) => {
-  const num = rightWidth * 2 + inertiaWidth;
+const getWidth = (rightWidth) => {
+  const num = rightWidth * 2;
   return `calc(100% + ${num}rpx)`;
 };
-const getWidth2 = (rightWidth, inertiaWidth) => {
-  const num = rightWidth + inertiaWidth;
+const getWidth2 = (rightWidth) => {
+  const num = rightWidth;
   return `calc(100% - ${num}rpx)`;
 };
 const getWidth3 = (rightWidth) => {
   return `calc(100% - ${rightWidth - 2}rpx)`;
 };
-const getMarginLeft = (rightWidth, inertiaWidth) => {
-  const num = rightWidth + inertiaWidth;
+const getMarginLeft = (rightWidth) => {
+  const num = rightWidth;
   return `calc(-${num}rpx)`;
 };
-const getMarginLeft2 = (rightWidth, inertiaWidth) => {
-  const num = rightWidth + inertiaWidth;
+const getMarginLeft2 = (rightWidth) => {
+  const num = rightWidth;
   return `${num}rpx`;
 };
 const getLeft = (tapType, item, idx, right) => {

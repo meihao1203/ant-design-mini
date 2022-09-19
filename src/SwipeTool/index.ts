@@ -21,7 +21,6 @@ Component({
     myStyle: {}, // 二次确认所需
     tapType: '', // 点击中的type
     disabled: false, // 禁止滑动
-    inertiaWidth: 0, // 左滑回弹距离
     rightWidth: 0, // 计算的右侧的宽度
     isSwiped: false, // 是否是已经滑开了
     maxSwipeLength: 0, // 最大的左滑的宽度
@@ -104,7 +103,7 @@ Component({
       this.onSetSwipe(isLeft);
     },
     onSetSwipe(isLeft: boolean) {
-      const { maxSwipeLength, f_x, speed, inertiaWidth, isSwiped } = this.data;
+      const { maxSwipeLength, f_x, speed, isSwiped } = this.data;
       let mySwipe = isSwiped;
       const { onSwipeEnd, key, callbackData } = this.props;
       // 处理x的位置，两次setData X是因为x如果相同位置不会变
@@ -113,7 +112,7 @@ Component({
         mySwipe = true;
       }
       // 为了处理到重置状态的效果，此处可添加 小动画
-      const maxLeft = mySwipe && isLeft ? -(maxSwipeLength + 2.01) : -(maxSwipeLength + inertiaWidth);
+      const maxLeft = mySwipe && isLeft ? -(maxSwipeLength + 2.01) : -maxSwipeLength;
       this.setData(
         {
           x: isLeft ? maxLeft : -0.01,
