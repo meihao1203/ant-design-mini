@@ -1,6 +1,6 @@
 <view class="index-alphabet">
   <view class="index-alphabet-i">
-    <alph
+    <index-list
       className=""
       alphabetList="{{alphabetList}}"
       onTouch="onTouch"/>
