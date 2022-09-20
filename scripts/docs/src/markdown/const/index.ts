@@ -61,5 +61,7 @@ export const ComponentGroupMap = {
     'Mask': '数据展示',
     'FloatingPanel': '数据展示',
     'ActionSheet': '数据展示',
-    'ImageUpload': '表单类组件'
+    'ImageUpload': '表单类组件',
+    'IndexList': '索引滑动选择器',
+    'SwipeTool': '滑动工具'
 }
