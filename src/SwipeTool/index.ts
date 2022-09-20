@@ -12,6 +12,8 @@ const setStyleObj = (rightItemWidth: number) => [
   }
 ];
 
+let myTimeOut = null;
+
 Component({
   props: SwipeToolDefaultProps,
   data: {
@@ -21,6 +23,7 @@ Component({
     myStyle: {}, // 二次确认所需
     tapType: '', // 点击中的type
     disabled: false, // 禁止滑动
+    inTouch: false, // 在触摸中的状态
     rightWidth: 0, // 计算的右侧的宽度
     isSwiped: false, // 是否是已经滑开了
     maxSwipeLength: 0, // 最大的左滑的宽度
@@ -70,21 +73,46 @@ Component({
     onTouchStart() {
       const { onSwipeStart, key, callbackData } = this.props;
       this.initWidth();
-      this.setData({ tapType: '' }); // 清空eventType = auto 的表现
+      this.setData({ tapType: '', inTouch: true }); // 清空eventType
       onSwipeStart(key, callbackData);
     },
     onTouchEnd() {
       const { onTouchEnd, key, callbackData } = this.props;
+      this.setData({ inTouch: false });
       onTouchEnd(key, callbackData);
     },
     // 滑动过程中的事件，是内部事件不向外透出，用于控制右侧按钮的位置信息
     onChange(e: any) {
-      const { changeArr } = this.data;
+      const { changeArr, maxSwipeLength, inTouch, isSwiped } = this.data;
       const { x } = e.detail;
       const L = Math.abs(x);
       // changeArr用于精准的控制滑动的方向
       const newArr = changeArr[1] === L ? changeArr : [changeArr[1], L];
       this.setData({ f_x: x, changeArr: newArr });
+      const isLeft = changeArr[1] >= changeArr[0];
+      if (x < 0 && L > maxSwipeLength && inTouch && isLeft && !isSwiped) {
+        clearTimeout(myTimeOut);
+        const idx = this.props.right.findIndex(u => u.eventType === 'move');
+        if (idx === -1) return;
+        myTimeOut = setTimeout(() => {
+          const _isLeft = this.data.changeArr[1] >= this.data.changeArr[0];
+          const _isMax = this.data.maxSwipeLength + 2 >= Math.abs(this.data.f_x);
+          if (this.data.inTouch && _isMax && _isLeft && !this.data.isSwiped) {
+            this.onSetCheck();
+          }
+        }, 100);
+      }
+      if (!isLeft && maxSwipeLength > L + 4 && inTouch) {
+        this.setData({ tapType: '', myStyle: {} });
+      }
+    },
+    onSetCheck() {
+      const { right, rightItemWidth } = this.props;
+      const idx = right.findIndex(u => u.eventType === 'move');
+      if (idx === -1) return;
+      my.vibrateShort({ success() {} });
+      const sty = setStyleObj(rightItemWidth)[idx];
+      this.setData({ tapType: right[idx].type, myStyle: sty });
     },
     // 意外中断了滑动，则立即开始结算滑动动作
     onTouchCancel(e: any) {
@@ -92,7 +120,8 @@ Component({
     },
     onChangeEnd(e: any) {
       const { x } = e.detail;
-      const { isSwiped, changeArr } = this.data;
+      const { isSwiped, changeArr, inTouch, tapType } = this.data;
+      const { onRightItemEvent, key, callbackData } = this.props;
       // 初始态，右滑直接返回
       if (x === 0) return;
       // 判断是否是左滑
@@ -100,6 +129,16 @@ Component({
       if (!isSwiped && Math.abs(x) < 10) {
         isLeft = false;
       }
+      if (!isLeft) {
+        this.setData({ tapType: '', myStyle: {} });
+      }
+      if (inTouch && !!tapType) {
+        this.setData({ tapType: '', myStyle: {} });
+        onRightItemEvent(tapType, key, callbackData);
+        this.onSetSwipe(false);
+        return;
+      }
+      this.setData({ changeArr: [0, 0] });
       this.onSetSwipe(isLeft);
     },
     onSetSwipe(isLeft: boolean) {
@@ -149,7 +188,7 @@ Component({
         return;
       }
       // auto 是展开按钮二次确认的效果
-      if (eventType === 'auto') {
+      if (eventType === 'auto' || eventType === 'move') {
         this.setData({ tapType: type, myStyle: sty });
       } else {
         this.onSetSwipe(false);

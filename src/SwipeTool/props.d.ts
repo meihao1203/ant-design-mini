@@ -1,13 +1,13 @@
 import { IBaseProps } from '../_base';
 
 interface RightItem {
-  type: String; // 类型标识
-  text: String; // 按钮文案
-  color: String; // 文字颜色
-  bgColor: String; // 背景颜色
+  type: string; // 类型标识
+  text: string; // 按钮文案
+  color?: string; // 文字颜色
+  bgColor?: string; // 背景颜色
   fontSize?: number; // 字体大小
-  confirmText?: String; // 按钮二次确认文案
-  eventType?: "auto" | "self"; // 按钮点击类型
+  confirmText?: string; // 按钮二次确认文案
+  eventType?: "auto" | "self" | "move"; // 按钮点击类型
 }
 
 export interface ISwipeToolProps extends IBaseProps {
@@ -17,7 +17,7 @@ export interface ISwipeToolProps extends IBaseProps {
   right: RightItem[], // 左滑出的数据
   rightItemWidth?: number, // 元素宽度
   callbackData?: any, // onRightItemEvent回调数据
-  onTouchEnd: (key: string, callbackData: any) => {}, // 触摸结束
+  onTouchEnd?: (key: string, callbackData: any) => {}, // 触摸结束
   onSwipeStart: (key: string, callbackData: any) => {}, // 滑动开始的回调
   onSwipeEnd: (key: string, isLeft: boolean, callbackData: any) => {}, // 滑动结束的回调
   onRightItemEvent: (type: string, key: string, callbackData: any) => {}, // 左滑出的元素的点击事件

@@ -39,7 +39,7 @@ toc: 'content'
 | color       | `string`     |  是  |文字颜色                                                      |
 | bgColor     | `string`     |  是  |背景颜色                                                      |
 | fontSize    | `number`     |  否  |字体大小， 默认 30                                             |
-| eventType   | `string`     |  否  |按钮点击类型： 默认 self:直接出发回调事件; auto: 进行二次确认        |
+| eventType   | `string`     |  否  |按钮响应类型：默认 self:直接回调; auto: 点击确认; move: 滑动确认    |
 
 ## 事件
 |事件名             | 说明                | 类型                                                      |
